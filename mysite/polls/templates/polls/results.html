@@ -1,0 +1,15 @@
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+
+{% if question.id == 25 %}
+<p>Thank you for participating in the survey</p>
+{% else %}
+<a href="/polls/{{ question.id|add:1 }}">Next Question</a>
+
+{% endif %}
